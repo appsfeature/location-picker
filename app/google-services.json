@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "Download and replace file from Firebase",
+    "project_id": "Download and replace file from Firebase",
+    "storage_bucket": "Download and replace file from Firebase"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "Download and replace file from Firebase",
+        "android_client_info": {
+          "package_name": "Download and replace file from Firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "Download and replace file from Firebase",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "Download and replace file from Firebase"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "Download and replace file from Firebase",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
