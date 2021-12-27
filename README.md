@@ -37,7 +37,7 @@ Add this to your project build.gradle
 [![](https://jitpack.io/v/appsfeature/location-picker.svg)](https://jitpack.io/#appsfeature/location-picker)
 ```gradle
 dependencies {
-    implementation 'com.github.appsfeature:location-picker:1.2'
+    implementation 'com.github.appsfeature:location-picker:1.4'
 }
 ```
 Needed support libs
@@ -50,7 +50,7 @@ dependencies {
 
 ### Usage methods
 ```java
-public class MainActivity extends AppCompatActivity implements LocationListener {
+public class MainActivity extends AppCompatActivity implements LocationPickerCallback {
     private TextView tvStatus;
 
     @Override

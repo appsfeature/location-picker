@@ -82,7 +82,6 @@ public class LocationPicker {
     }
 
     public void open(Context context) {
-        this.locationPickerCallback = ((LocationPickerCallback) context);
         context.startActivity(new Intent(context, LocationPickerActivity.class));
     }
 
