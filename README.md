@@ -96,3 +96,20 @@ public class AppApplication extends Application {
     }
 }
 ```
+### Need to Add google-services.json file in app root directory.
+```java
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sample.locationpicker">
+
+    <application
+        ...
+        ...
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_api_key" />
+    </application>
+
+</manifest>
+```

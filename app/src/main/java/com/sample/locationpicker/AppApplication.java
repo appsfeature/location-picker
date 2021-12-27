@@ -16,9 +16,9 @@ public class AppApplication extends Application {
         super.onCreate();
         instance = this;
 
-        LocationPicker.getInstance()
-                .setEnableSearchBar(true)
-                .setEnableHouseDetails(true)
-                .setApiKey(getString(R.string.google_api_key));
+//        LocationPicker.getInstance()
+//                .setEnableSearchBar(true)
+//                .setEnableHouseDetails(true)
+//                .setApiKey(getString(R.string.google_api_key));
     }
 }
