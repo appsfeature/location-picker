@@ -61,7 +61,9 @@ public class MainActivity extends AppCompatActivity implements LocationPickerCal
     }
 
     public void onPick(View view) {
-        LocationPicker.getInstance().open(this);
+        LocationPicker.getInstance()
+                .setLocationCallback(this)
+                .open(this);
     }
 
     @Override
