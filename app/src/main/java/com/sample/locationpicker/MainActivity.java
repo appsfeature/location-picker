@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.location.picker.interfaces.LocationListener;
+import com.location.picker.interfaces.LocationPickerCallback;
 import com.location.picker.LocationPicker;
 import com.location.picker.model.LocationPickerDetail;
 
-public class MainActivity extends AppCompatActivity implements LocationListener {
+public class MainActivity extends AppCompatActivity implements LocationPickerCallback {
     private TextView tvStatus;
 
     @Override

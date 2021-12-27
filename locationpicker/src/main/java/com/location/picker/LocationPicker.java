@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.location.picker.activity.LocationPickerActivity;
-import com.location.picker.interfaces.LocationListener;
+import com.location.picker.interfaces.LocationPickerCallback;
 import com.location.picker.model.LocationPickerDetail;
 
 public class LocationPicker {
@@ -15,7 +15,7 @@ public class LocationPicker {
     private boolean isEnableHouseDetails = true;
     private boolean isEnableButtonMap = true;
     private boolean isEnableButtonDirection = true;
-    private LocationListener locationListener;
+    private LocationPickerCallback locationPickerCallback;
 
     private LocationPicker() {
         if (instance != null) {
@@ -76,14 +76,19 @@ public class LocationPicker {
         return this;
     }
 
+    public LocationPicker setLocationCallback(LocationPickerCallback locationPickerCallback) {
+        this.locationPickerCallback = locationPickerCallback;
+        return this;
+    }
+
     public void open(Context context) {
-        this.locationListener = ((LocationListener) context);
+        this.locationPickerCallback = ((LocationPickerCallback) context);
         context.startActivity(new Intent(context, LocationPickerActivity.class));
     }
 
     public void updateCallback(LocationPickerDetail detail) {
-        if (locationListener != null) {
-            locationListener.onLocationSelected(detail);
+        if (locationPickerCallback != null) {
+            locationPickerCallback.onLocationSelected(detail);
         }
     }
 }
