@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,6 +65,7 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.location.picker.LocationPicker;
 import com.location.picker.model.LocationPickerDetail;
 import com.location.picker.R;
+import com.location.picker.util.LocationConstants;
 import com.location.picker.util.MapUtility;
 
 import java.io.IOException;
@@ -185,21 +187,21 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         if (i != null) {
             Bundle extras = i.getExtras();
             if (extras != null) {
-                userAddress = extras.getString(MapUtility.ADDRESS);
+                userAddress = extras.getString(LocationConstants.ADDRESS);
                 //temp -> get lat , log from db
-                mLatitude = getIntent().getDoubleExtra(MapUtility.LATITUDE, 0);
-                mLongitude = getIntent().getDoubleExtra(MapUtility.LONGITUDE, 0);
-                userCountryISOCode = extras.getString(MapUtility.COUNTRY_ISO_CODE, null);
+                mLatitude = getIntent().getDoubleExtra(LocationConstants.LATITUDE, 0);
+                mLongitude = getIntent().getDoubleExtra(LocationConstants.LONGITUDE, 0);
+                userCountryISOCode = extras.getString(LocationConstants.COUNTRY_ISO_CODE, null);
             }
         }
 
         if (savedInstanceState != null) {
-            mLatitude = savedInstanceState.getDouble("latitude");
-            mLongitude = savedInstanceState.getDouble("longitude");
-            userAddress = savedInstanceState.getString("userAddress");
-            currentLatitude = savedInstanceState.getDouble("currentLatitude");
-            currentLongitude = savedInstanceState.getDouble("currentLongitude");
-            userCountryISOCode = savedInstanceState.getString("userCountryISOCode", null);
+            mLatitude = savedInstanceState.getDouble(LocationConstants.LATITUDE);
+            mLongitude = savedInstanceState.getDouble(LocationConstants.LONGITUDE);
+            userAddress = savedInstanceState.getString(LocationConstants.ADDRESS);
+            currentLatitude = savedInstanceState.getDouble(LocationConstants.CURRENT_LATITUDE);
+            currentLongitude = savedInstanceState.getDouble(LocationConstants.CURRENT_LONGITUDE);
+            userCountryISOCode = savedInstanceState.getString(LocationConstants.COUNTRY_ISO_CODE, null);
         }
 
         if (!MapUtility.isNetworkAvailable(this)) {
@@ -213,16 +215,14 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                 if (!Places.isInitialized()) {
                     Places.initialize(LocationPickerActivity.this.getApplicationContext(), LocationPicker.getInstance().apiKey);
                 }
-
                 // Set the fields to specify which types of place data to return.
                 List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
 
-
-                // Start the autocomplete intent.
-                Intent intent = new Autocomplete.IntentBuilder(
-                        AutocompleteActivityMode.FULLSCREEN, fields)
-                        .setCountry(userCountryISOCode)
-                        .build(LocationPickerActivity.this);
+                Autocomplete.IntentBuilder intentBuilder = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields);
+                if(!TextUtils.isEmpty(userCountryISOCode)){
+                    intentBuilder.setCountry(userCountryISOCode);
+                }
+                Intent intent = intentBuilder.build(LocationPickerActivity.this);
                 LocationPickerActivity.this.startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
             }
         });
@@ -608,12 +608,12 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putDouble("latitude", mLatitude);
-        outState.putDouble("longitude", mLongitude);
-        outState.putString("userAddress", userAddress);
-        outState.putDouble("currentLatitude", currentLatitude);
-        outState.putDouble("currentLongitude", currentLongitude);
-        outState.putString("userCountryISOCode", userCountryISOCode);
+        outState.putDouble(LocationConstants.LATITUDE, mLatitude);
+        outState.putDouble(LocationConstants.LONGITUDE, mLongitude);
+        outState.putString(LocationConstants.ADDRESS, userAddress);
+        outState.putDouble(LocationConstants.CURRENT_LATITUDE, currentLatitude);
+        outState.putDouble(LocationConstants.CURRENT_LONGITUDE, currentLongitude);
+        outState.putString(LocationConstants.COUNTRY_ISO_CODE, userCountryISOCode);
     }
 
     @Override

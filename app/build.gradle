@@ -39,4 +39,5 @@ android {
 dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
     implementation project(path: ':locationpicker')
+    implementation "com.google.android.libraries.places:places:$rootProject.ext.google_places"
 }

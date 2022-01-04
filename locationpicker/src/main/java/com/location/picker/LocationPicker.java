@@ -6,6 +6,8 @@ import android.content.Intent;
 import com.location.picker.activity.LocationPickerActivity;
 import com.location.picker.interfaces.LocationPickerCallback;
 import com.location.picker.model.LocationPickerDetail;
+import com.location.picker.util.CountryCode;
+import com.location.picker.util.LocationConstants;
 
 public class LocationPicker {
 
@@ -82,7 +84,12 @@ public class LocationPicker {
     }
 
     public void open(Context context) {
-        context.startActivity(new Intent(context, LocationPickerActivity.class));
+        open(context, "");
+    }
+
+    public void open(Context context, String countryIsoCode) {
+        context.startActivity(new Intent(context, LocationPickerActivity.class)
+                .putExtra(LocationConstants.COUNTRY_ISO_CODE, countryIsoCode));
     }
 
     public void updateCallback(LocationPickerDetail detail) {
