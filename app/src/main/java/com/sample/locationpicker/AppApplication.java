@@ -20,7 +20,7 @@ public class AppApplication extends Application {
         instance = this;
         LocationPicker.getInstance()
                 .setEnableSearchBar(true)
-                .setEnableAddressLine1(false)
+                .setEnableAddressLine1(true)
                 .setEnableAddressLine2(true)
                 .setEnableCityDetails(true)
                 .setHintAddressLine1("Shop Detail")
