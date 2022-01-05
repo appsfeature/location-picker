@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.location.picker.interfaces.LocationPickerCallback;
 import com.location.picker.LocationPicker;
 import com.location.picker.model.LocationPickerDetail;
+import com.location.picker.util.CountryCode;
 
 public class MainActivity extends AppCompatActivity implements LocationPickerCallback {
     private TextView tvStatus;
@@ -23,12 +24,12 @@ public class MainActivity extends AppCompatActivity implements LocationPickerCal
     public void onPick(View view) {
         LocationPicker.getInstance()
                 .setLocationCallback(this)
-                .open(this);
+                .open(this, CountryCode.India);
     }
 
     @Override
     public void onLocationSelected(LocationPickerDetail detail) {
-        tvStatus.setText(detail.getLatitude() + "," + detail.getLongitude());
+        tvStatus.setText(detail.getLatLong());
     }
 
     @Override

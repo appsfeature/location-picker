@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">LocationPickerModule</string>
     <string name="show_location_picker">Show Location Picker</string>
-    <string name="addressline1_hint">Enter Flat No / Floor / Landmark </string>
+    <string name="address_line1_hint">Enter Flat No / Floor / Landmark </string>
+    <string name="address_line2_hint">Address Line 2</string>
 </resources>

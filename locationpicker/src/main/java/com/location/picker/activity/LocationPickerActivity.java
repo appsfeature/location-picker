@@ -88,10 +88,10 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
     private GoogleMap mMap;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 2;
     private boolean mLocationPermissionGranted;
-    private TextView imgSearch;
-    private TextView citydetail;
-    private EditText addressline1;
-    private EditText addressline2;
+    private TextView etSearchBar;
+    private TextView etCitydetail;
+    private EditText etAddressline1;
+    private EditText etAddressline2;
     int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
     //inital zoom
@@ -109,7 +109,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
 
-    private LocationPickerDetail mLocationDetail = new LocationPickerDetail();
+    private final LocationPickerDetail mLocationDetail = new LocationPickerDetail();
     private String userAddress;
 
     @Override
@@ -121,23 +121,27 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         setContentView(R.layout.location_picker_activity);
         if(getSupportActionBar()!=null)
             getSupportActionBar().hide();
-        ImageView imgCurrentloc = findViewById(R.id.iv_current_location);
-        Button txtSelectLocation = findViewById(R.id.btn_continue);
-        ImageView directionTool = findViewById(R.id.iv_direction_tool);
-        ImageView googleMapTool = findViewById(R.id.iv_google_maps_tool);
+        ImageView ivCurrentLoc = findViewById(R.id.iv_current_location);
+        Button btnContinue = findViewById(R.id.btn_continue);
+        ImageView ivDirectionTool = findViewById(R.id.iv_direction_tool);
+        ImageView ivGoogleMapTool = findViewById(R.id.iv_google_maps_tool);
 
-        googleMapTool.setVisibility(LocationPicker.getInstance().isEnableButtonMap() ? View.VISIBLE : View.GONE);
-        directionTool.setVisibility(LocationPicker.getInstance().isEnableButtonDirection() ? View.VISIBLE : View.GONE);
+        ivGoogleMapTool.setVisibility(LocationPicker.getInstance().isEnableButtonMap() ? View.VISIBLE : View.GONE);
+        ivDirectionTool.setVisibility(LocationPicker.getInstance().isEnableButtonDirection() ? View.VISIBLE : View.GONE);
 
-        imgSearch = findViewById(R.id.tv_search_bar);
-        addressline1 = findViewById(R.id.tv_address_line1);
-        addressline2 = findViewById(R.id.tv_address_line2);
-        citydetail = findViewById(R.id.tv_city_details);
+        etSearchBar = findViewById(R.id.tv_search_bar);
+        etAddressline1 = findViewById(R.id.tv_address_line1);
+        etAddressline2 = findViewById(R.id.tv_address_line2);
+        etCitydetail = findViewById(R.id.tv_city_details);
 
-        imgSearch.setVisibility(LocationPicker.getInstance().isEnableSearchBar() ? View.VISIBLE : View.GONE);
-        addressline1.setVisibility(LocationPicker.getInstance().isEnableHouseDetails() ? View.VISIBLE : View.GONE);
+        etSearchBar.setVisibility(LocationPicker.getInstance().isEnableSearchBar() ? View.VISIBLE : View.GONE);
+        etAddressline1.setVisibility(LocationPicker.getInstance().isEnableAddressLine1() ? View.VISIBLE : View.GONE);
+        etAddressline2.setVisibility(LocationPicker.getInstance().isEnableAddressLine2() ? View.VISIBLE : View.GONE);
+        etCitydetail.setVisibility(LocationPicker.getInstance().isEnableCityDetails() ? View.VISIBLE : View.GONE);
+        if(!TextUtils.isEmpty(LocationPicker.getInstance().getHintAddressLine1())){
+            etAddressline1.setHint(LocationPicker.getInstance().getHintAddressLine1());
+        }
 
-        //intitalization of FusedLocationProviderClient
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         //Prepare for Request for current location
@@ -209,7 +213,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         }
 
 
-        imgSearch.setOnClickListener(new View.OnClickListener() {
+        etSearchBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!Places.isInitialized()) {
@@ -227,7 +231,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             }
         });
 
-        txtSelectLocation.setOnClickListener(new View.OnClickListener() {
+        btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                Intent intent = new Intent();
@@ -238,17 +242,21 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
 //                intent.putExtra("fullAddress",addressBundle);
 //                intent.putExtra("id", place_id);//if you want place id
 //                intent.putExtra("url", place_url);//if you want place url
-                mLocationDetail.setAddress(imgSearch.getText().toString().trim());
+                mLocationDetail.setAddressLine1(etAddressline1.getText().toString().trim());
+                mLocationDetail.setAddressLine2Edited(etAddressline2.getText().toString().trim());
+                mLocationDetail.setAddressSearched(etSearchBar.getText().toString().trim());
+                mLocationDetail.setCityDetails(etCitydetail.getText().toString().trim());
                 mLocationDetail.setId(place_id);
                 mLocationDetail.setUrl(place_url);
                 mLocationDetail.setLatitude(mLatitude);
                 mLocationDetail.setLongitude(mLongitude);
+                mLocationDetail.setLatLong(mLatitude + "," + mLongitude);
                 LocationPicker.getInstance().updateCallback(mLocationDetail);
                 finish();
             }
         });
 
-        imgCurrentloc.setOnClickListener(new View.OnClickListener() {
+        ivCurrentLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LocationPickerActivity.this.showCurrentLocationOnMap(false);
@@ -258,7 +266,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         });
 
         // google maps tools
-        directionTool.setOnClickListener(new View.OnClickListener() {
+        ivDirectionTool.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LocationPickerActivity.this.showCurrentLocationOnMap(true);
@@ -267,7 +275,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             }
         });
 
-        googleMapTool.setOnClickListener(new View.OnClickListener() {
+        ivGoogleMapTool.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Default google map
@@ -295,13 +303,15 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                 userAddress = place.getAddress();
                 //  addressdetails=place.getAddressComponents();
                 if (userAddress != null) {
-                    imgSearch.setText("" + userAddress);
+                    etSearchBar.setText("" + userAddress);
                 }
                 mLatitude = place.getLatLng().latitude;
                 mLongitude = place.getLatLng().longitude;
                 place_id = place.getId();
                 place_url = String.valueOf(place.getWebsiteUri());
 
+
+                getAddressByGeoCodingLatLng();
                 addMarker();
 
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
@@ -409,7 +419,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             try {
                 mMap.clear();
                 if (userAddress != null) {
-                    imgSearch.setText("" + userAddress);
+                    etSearchBar.setText("" + userAddress);
                 }
                 markerOptions = new MarkerOptions().position(coordinate).title(userAddress).icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("ic_map_pin",100,100)));
                 if(isZooming) {
@@ -433,8 +443,8 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         }
 
         try {
-            addressline2.setText(mLocationDetail.getAddressLine2());
-            citydetail.setText(mLocationDetail.getCity()+SPACE+mLocationDetail.getPostalCode()+SPACE+mLocationDetail.getState()+SPACE+mLocationDetail.getCountry());
+            etAddressline2.setText(mLocationDetail.getAddressLine2());
+            etCitydetail.setText(mLocationDetail.getCity()+SPACE+mLocationDetail.getPostalCode()+SPACE+mLocationDetail.getState()+SPACE+mLocationDetail.getCountry());
 
         }catch (Exception ex){ ex.printStackTrace();}
 
@@ -731,7 +741,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
                     sb.append(postalCode).append(" ");
                     // return sb.toString();
 
-                    mLocationDetail.setFullAddress(sb.toString());
+                    mLocationDetail.setCityDetails(sb.toString());
 
                     return mLocationDetail;
                 } else {

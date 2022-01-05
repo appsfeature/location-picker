@@ -41,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
+        android:clickable="true"
         android:background="@drawable/white_rounded_corner"
         android:orientation="vertical"
         android:padding="5dp">
@@ -49,7 +50,7 @@
             android:id="@+id/tv_address_line1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/addressline1_hint"
+            android:hint="@string/address_line1_hint"
             android:inputType="textCapSentences|textMultiLine"
             android:lines="5"
             android:minLines="1"
@@ -60,8 +61,7 @@
             android:id="@+id/tv_address_line2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/tv_city_details"
-            android:hint="Enter location"
+            android:hint="@string/address_line2_hint"
             android:inputType="textCapSentences|textMultiLine"
             android:lines="3"
             android:minLines="1"
@@ -70,10 +70,10 @@
 
         <TextView
             android:id="@+id/tv_city_details"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="4dp"
-            android:text="PinCode"
+            android:text="City Detail"
             android:textColor="@color/quantum_grey600"
             android:textSize="16sp"
             android:padding="16dp"/>

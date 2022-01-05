@@ -37,7 +37,7 @@ Add this to your project build.gradle
 [![](https://jitpack.io/v/appsfeature/location-picker.svg)](https://jitpack.io/#appsfeature/location-picker)
 ```gradle
 dependencies {
-    implementation 'com.github.appsfeature:location-picker:1.4'
+    implementation 'com.github.appsfeature:location-picker:1.6'
 }
 ```
 Needed support libs
@@ -63,12 +63,12 @@ public class MainActivity extends AppCompatActivity implements LocationPickerCal
     public void onPick(View view) {
         LocationPicker.getInstance()
                 .setLocationCallback(this)
-                .open(this);
+                .open(this, CountryCode.India);
     }
 
     @Override
     public void onLocationSelected(LocationPickerDetail detail) {
-        tvStatus.setText(detail.getLatitude() + "," + detail.getLongitude());
+        tvStatus.setText(detail.getLatLong());
     }
 
     @Override
@@ -93,7 +93,10 @@ public class AppApplication extends Application {
 
         LocationPicker.getInstance()
                 .setEnableSearchBar(true)
-                .setEnableHouseDetails(true)
+                .setEnableAddressLine1(true)
+                .setEnableAddressLine2(true)
+                .setEnableCityDetails(true)
+                .setHintAddressLine1("Enter Shop Detail")
                 .setApiKey(getString(R.string.google_api_key));
     }
 }

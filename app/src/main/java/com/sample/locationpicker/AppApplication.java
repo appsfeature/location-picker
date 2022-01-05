@@ -18,12 +18,12 @@ public class AppApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), getString(R.string.google_api_key), Locale.US);
-        }
         LocationPicker.getInstance()
                 .setEnableSearchBar(true)
-                .setEnableHouseDetails(true)
+                .setEnableAddressLine1(true)
+                .setEnableAddressLine2(true)
+                .setEnableCityDetails(true)
+                .setHintAddressLine1("Enter Shop Detail")
                 .setApiKey(getString(R.string.google_api_key));
     }
 }

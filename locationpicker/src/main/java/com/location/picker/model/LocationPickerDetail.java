@@ -4,9 +4,10 @@ public class LocationPickerDetail {
 
     private double latitude;
     private double longitude;
-    private String address;
+    private String addressSearched;
     private String addressLine1;
     private String addressLine2;
+    private String addressLine2Edited;
     private String cityDetails;
     private String id;
     private String url;
@@ -14,7 +15,7 @@ public class LocationPickerDetail {
     private String state;
     private String country;
     private String postalCode;
-    private String fullAddress;
+    private String latLong;
 
     public double getLatitude() {
         return latitude;
@@ -32,12 +33,12 @@ public class LocationPickerDetail {
         this.longitude = longitude;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddressSearched() {
+        return addressSearched;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddressSearched(String addressSearched) {
+        this.addressSearched = addressSearched;
     }
 
     public String getAddressLine1() {
@@ -54,6 +55,14 @@ public class LocationPickerDetail {
 
     public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
+    }
+
+    public String getAddressLine2Edited() {
+        return addressLine2Edited;
+    }
+
+    public void setAddressLine2Edited(String addressLine2Edited) {
+        this.addressLine2Edited = addressLine2Edited;
     }
 
     public String getCityDetails() {
@@ -112,11 +121,11 @@ public class LocationPickerDetail {
         this.postalCode = postalCode;
     }
 
-    public String getFullAddress() {
-        return fullAddress;
+    public String getLatLong() {
+        return latLong;
     }
 
-    public void setFullAddress(String fullAddress) {
-        this.fullAddress = fullAddress;
+    public void setLatLong(String latLong) {
+        this.latLong = latLong;
     }
 }

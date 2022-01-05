@@ -6,7 +6,6 @@ import android.content.Intent;
 import com.location.picker.activity.LocationPickerActivity;
 import com.location.picker.interfaces.LocationPickerCallback;
 import com.location.picker.model.LocationPickerDetail;
-import com.location.picker.util.CountryCode;
 import com.location.picker.util.LocationConstants;
 
 public class LocationPicker {
@@ -14,10 +13,13 @@ public class LocationPicker {
     private static volatile LocationPicker instance;
     public String apiKey = "";
     private boolean isEnableSearchBar = true;
-    private boolean isEnableHouseDetails = true;
+    private boolean isEnableAddressLine1 = true;
+    private boolean isEnableAddressLine2 = true;
+    private boolean isEnableCityDetails = true;
     private boolean isEnableButtonMap = true;
     private boolean isEnableButtonDirection = true;
     private LocationPickerCallback locationPickerCallback;
+    private String hintAddressLine1;
 
     private LocationPicker() {
         if (instance != null) {
@@ -51,12 +53,39 @@ public class LocationPicker {
         return this;
     }
 
-    public boolean isEnableHouseDetails() {
-        return isEnableHouseDetails;
+    public String getHintAddressLine1() {
+        return hintAddressLine1;
     }
 
-    public LocationPicker setEnableHouseDetails(boolean isEnableHouseDetails) {
-        this.isEnableHouseDetails = isEnableHouseDetails;
+    public LocationPicker setHintAddressLine1(String hintAddressLine1) {
+        this.hintAddressLine1 = hintAddressLine1;
+        return this;
+    }
+
+    public boolean isEnableAddressLine1() {
+        return isEnableAddressLine1;
+    }
+
+    public LocationPicker setEnableAddressLine1(boolean enableAddressLine1) {
+        isEnableAddressLine1 = enableAddressLine1;
+        return this;
+    }
+
+    public boolean isEnableAddressLine2() {
+        return isEnableAddressLine2;
+    }
+
+    public LocationPicker setEnableAddressLine2(boolean enableAddressLine2) {
+        isEnableAddressLine2 = enableAddressLine2;
+        return this;
+    }
+
+    public boolean isEnableCityDetails() {
+        return isEnableCityDetails;
+    }
+
+    public LocationPicker setEnableCityDetails(boolean enableCityDetails) {
+        isEnableCityDetails = enableCityDetails;
         return this;
     }
 
