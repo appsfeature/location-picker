@@ -62,6 +62,7 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.android.material.textfield.TextInputLayout;
 import com.location.picker.LocationPicker;
 import com.location.picker.model.LocationPickerDetail;
 import com.location.picker.R;
@@ -89,7 +90,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 2;
     private boolean mLocationPermissionGranted;
     private TextView etSearchBar;
-    private TextView etCitydetail;
+    private EditText etCitydetail;
     private EditText etAddressline1;
     private EditText etAddressline2;
     int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
@@ -130,6 +131,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         ivDirectionTool.setVisibility(LocationPicker.getInstance().isEnableButtonDirection() ? View.VISIBLE : View.GONE);
 
         etSearchBar = findViewById(R.id.tv_search_bar);
+        TextInputLayout etAddressLineLayout1 = findViewById(R.id.et_layout_address_line1);
         etAddressline1 = findViewById(R.id.tv_address_line1);
         etAddressline2 = findViewById(R.id.tv_address_line2);
         etCitydetail = findViewById(R.id.tv_city_details);
@@ -139,7 +141,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         etAddressline2.setVisibility(LocationPicker.getInstance().isEnableAddressLine2() ? View.VISIBLE : View.GONE);
         etCitydetail.setVisibility(LocationPicker.getInstance().isEnableCityDetails() ? View.VISIBLE : View.GONE);
         if(!TextUtils.isEmpty(LocationPicker.getInstance().getHintAddressLine1())){
-            etAddressline1.setHint(LocationPicker.getInstance().getHintAddressLine1());
+            etAddressLineLayout1.setHint(LocationPicker.getInstance().getHintAddressLine1());
         }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -444,6 +446,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
 
         try {
             etAddressline2.setText(mLocationDetail.getAddressLine2());
+            etAddressline2.setSelection(etAddressline2.getText().length() - 1);
             etCitydetail.setText(mLocationDetail.getCity()+SPACE+mLocationDetail.getPostalCode()+SPACE+mLocationDetail.getState()+SPACE+mLocationDetail.getCountry());
 
         }catch (Exception ex){ ex.printStackTrace();}

@@ -23,7 +23,7 @@ public class AppApplication extends Application {
                 .setEnableAddressLine1(true)
                 .setEnableAddressLine2(true)
                 .setEnableCityDetails(true)
-                .setHintAddressLine1("Enter Shop Detail")
+                .setHintAddressLine1("Shop Detail")
                 .setApiKey(getString(R.string.google_api_key));
     }
 }

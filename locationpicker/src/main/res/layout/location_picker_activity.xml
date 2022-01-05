@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true">
 
     <fragment
@@ -26,13 +27,14 @@
         android:drawableEnd="@drawable/ic_search_black_24dp"
         android:drawableRight="@drawable/ic_search_black_24dp"
         android:drawablePadding="5dp"
+        android:drawableTint="@color/colorPrimary"
         android:gravity="start|center_vertical"
         android:hint="Search Location"
         android:maxLines="1"
         android:padding="16dp"
         android:textColorHint="@color/colorPrimary"
         android:textCursorDrawable="@null"
-        android:textSize="18sp" />
+        android:textSize="@dimen/location_edittext_search_bar_size" />
 
 
     <LinearLayout
@@ -42,50 +44,89 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
         android:clickable="true"
-        android:background="@drawable/white_rounded_corner"
+        android:background="@drawable/white_rounded_corner_bottom"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-        <EditText
-            android:id="@+id/tv_address_line1"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_address_line1"
+            style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/address_line1_hint"
-            android:inputType="textCapSentences|textMultiLine"
-            android:lines="5"
-            android:minLines="1"
-            android:textSize="16sp"
-            android:padding="16dp"/>
+            android:layout_marginTop="16dp"
+            app:expandedHintEnabled="true"
+            android:hint="@string/address_line1_hint">
 
-        <EditText
-            android:id="@+id/tv_address_line2"
+            <!--this is the actual edit text which takes the input-->
+            <AutoCompleteTextView
+                android:id="@+id/tv_address_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:textSize="@dimen/location_edittext_size"
+                android:lines="1"
+                android:padding="14dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/address_line2_hint"
-            android:inputType="textCapSentences|textMultiLine"
-            android:lines="3"
-            android:minLines="1"
-            android:padding="16dp"
-            android:textSize="16sp" />
+            android:layout_marginTop="8dp"
+            app:expandedHintEnabled="true"
+            android:hint="@string/address_line2_hint">
 
-        <TextView
-            android:id="@+id/tv_city_details"
+            <!--this is the actual edit text which takes the input-->
+            <AutoCompleteTextView
+                android:id="@+id/tv_address_line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences|textMultiLine"
+                android:lines="3"
+                android:textSize="@dimen/location_edittext_size"
+                android:minLines="1"
+                android:ellipsize="end"
+                android:padding="14dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="4dp"
-            android:text="City Detail"
-            android:textColor="@color/quantum_grey600"
-            android:textSize="16sp"
-            android:padding="16dp"/>
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:expandedHintEnabled="true"
+            android:hint="@string/city_detail_hint">
+
+            <!--this is the actual edit text which takes the input-->
+            <AutoCompleteTextView
+                android:id="@+id/tv_city_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences|textMultiLine"
+                android:textColor="@color/quantum_grey600"
+                android:enabled="false"
+                android:clickable="false"
+                android:textSize="@dimen/location_edittext_size"
+                android:lines="3"
+                android:minLines="1"
+                android:ellipsize="end"
+                android:padding="14dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:background="@color/quantum_googgreen500"
-            android:text="Continue"
-            android:textColor="@color/quantum_white_100"/>
+            android:text="@string/button_continue_text"
+            android:textColor="@color/quantum_white_100" />
 
 
     </LinearLayout>

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">LocationPickerModule</string>
+    <string name="button_continue_text">Continue</string>
     <string name="show_location_picker">Show Location Picker</string>
     <string name="address_line1_hint">Enter Flat No / Floor / Landmark </string>
     <string name="address_line2_hint">Address Line 2</string>
+    <string name="city_detail_hint">City Detail</string>
 </resources>

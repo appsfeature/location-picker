@@ -31,4 +31,5 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
     implementation "com.google.android.libraries.places:places:$rootProject.ext.google_places"
+    implementation "com.google.android.material:material:$rootProject.ext.material"
 }

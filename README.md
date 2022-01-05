@@ -1,6 +1,8 @@
 # location-picker
 ##Before you begin:
-##Required for Search Bar: ###Before you start using the Places SDK for Android, you need a project with a billing account and the Places API enabled. We recommend creating multiple Project Owners and Billing Administrators, so that you'll always have someone with these roles available to your team. To learn more, see Set up in Cloud Console.
+
+##Required for Search Bar:
+###Before you start using the Places SDK for Android, you need a project with a billing account and the Places API enabled. We recommend creating multiple Project Owners and Billing Administrators, so that you'll always have someone with these roles available to your team. To learn more, see Set up in Cloud Console.
 
 *Search any location using Google Places Library
 *Pick any location from the map
@@ -25,6 +27,7 @@ allprojects {
 
     ext {
         appcompat = '1.3.0'
+        material = '1.3.0'
 
         google_places = '2.5.0'
     }
@@ -37,7 +40,7 @@ Add this to your project build.gradle
 [![](https://jitpack.io/v/appsfeature/location-picker.svg)](https://jitpack.io/#appsfeature/location-picker)
 ```gradle
 dependencies {
-    implementation 'com.github.appsfeature:location-picker:1.6'
+    implementation 'com.github.appsfeature:location-picker:1.7'
 }
 ```
 Needed support libs
