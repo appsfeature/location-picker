@@ -73,6 +73,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_address_line2"
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,11 +96,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_layout_city_details"
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             app:expandedHintEnabled="true"
             android:hint="@string/city_detail_hint">
 
@@ -124,6 +125,7 @@
             android:id="@+id/btn_continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:background="@color/quantum_googgreen500"
             android:text="@string/button_continue_text"
             android:textColor="@color/quantum_white_100" />

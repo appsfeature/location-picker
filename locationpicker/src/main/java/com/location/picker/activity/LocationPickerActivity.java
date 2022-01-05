@@ -132,14 +132,16 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
 
         etSearchBar = findViewById(R.id.tv_search_bar);
         TextInputLayout etAddressLineLayout1 = findViewById(R.id.et_layout_address_line1);
+        TextInputLayout etAddressLineLayout2 = findViewById(R.id.et_layout_address_line2);
+        TextInputLayout etCityDetailsLayout2 = findViewById(R.id.et_layout_city_details);
         etAddressline1 = findViewById(R.id.tv_address_line1);
         etAddressline2 = findViewById(R.id.tv_address_line2);
         etCitydetail = findViewById(R.id.tv_city_details);
 
         etSearchBar.setVisibility(LocationPicker.getInstance().isEnableSearchBar() ? View.VISIBLE : View.GONE);
-        etAddressline1.setVisibility(LocationPicker.getInstance().isEnableAddressLine1() ? View.VISIBLE : View.GONE);
-        etAddressline2.setVisibility(LocationPicker.getInstance().isEnableAddressLine2() ? View.VISIBLE : View.GONE);
-        etCitydetail.setVisibility(LocationPicker.getInstance().isEnableCityDetails() ? View.VISIBLE : View.GONE);
+        etAddressLineLayout1.setVisibility(LocationPicker.getInstance().isEnableAddressLine1() ? View.VISIBLE : View.GONE);
+        etAddressLineLayout2.setVisibility(LocationPicker.getInstance().isEnableAddressLine2() ? View.VISIBLE : View.GONE);
+        etCityDetailsLayout2.setVisibility(LocationPicker.getInstance().isEnableCityDetails() ? View.VISIBLE : View.GONE);
         if(!TextUtils.isEmpty(LocationPicker.getInstance().getHintAddressLine1())){
             etAddressLineLayout1.setHint(LocationPicker.getInstance().getHintAddressLine1());
         }
