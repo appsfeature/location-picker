@@ -17,6 +17,7 @@ public class LocationPicker {
     private boolean isEnableAddressLine2 = true;
     private boolean isEnableCityDetails = true;
     private boolean isEnableButtonMap = true;
+    private boolean isEnableTranslucentStatus = false;
     private boolean isEnableButtonDirection = true;
     private LocationPickerCallback locationPickerCallback;
     private String hintAddressLine1;
@@ -125,5 +126,14 @@ public class LocationPicker {
         if (locationPickerCallback != null) {
             locationPickerCallback.onLocationSelected(detail);
         }
+    }
+
+    public boolean isEnableTranslucentStatus() {
+        return isEnableTranslucentStatus;
+    }
+
+    public LocationPicker setEnableTranslucentStatus(boolean enableTranslucentStatus) {
+        isEnableTranslucentStatus = enableTranslucentStatus;
+        return this;
     }
 }
