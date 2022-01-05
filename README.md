@@ -105,7 +105,7 @@ public class AppApplication extends Application {
 }
 ```
 ### Need to Add google-services.json file in app root directory.
-```java
+```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sample.locationpicker">
 
@@ -120,4 +120,17 @@ public class AppApplication extends Application {
     </application>
 
 </manifest>
+```
+### Customise Xml resources
+```xml
+    <!--  Customise String resources  -->
+    <string name="button_continue_text">Continue</string>
+    <string name="show_location_picker">Show Location Picker</string>
+    <string name="address_line1_hint">Enter Flat No / Floor / Landmark </string>
+    <string name="address_line2_hint">Address Line 2</string>
+    <string name="city_detail_hint">City Detail</string>
+
+    <!--  Customise Dimens resources  -->
+    <dimen name="location_edittext_size">12sp</dimen>
+    <dimen name="location_edittext_search_bar_size">16sp</dimen>
 ```
