@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.location.picker.R;
@@ -40,33 +41,39 @@ public class MapUtility {
     }
 
 
-    public static void showProgress(final Context context) {
-        try {
-            if (!((Activity) context).isFinishing()) {
-                View layout = LayoutInflater.from(context).inflate(R.layout.popup_loading, null);
-                popupWindow = new Dialog(context, android.R.style.Theme_Translucent);
-                popupWindow.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                popupWindow.setContentView(layout);
-                popupWindow.setCancelable(false);
-                if (!((Activity) context).isFinishing()) {
-                    popupWindow.show();
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+    public static void showProgress(ProgressBar progressBar) {
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
         }
+//        try {
+//            if (!((Activity) context).isFinishing()) {
+//                View layout = LayoutInflater.from(context).inflate(R.layout.popup_loading, null);
+//                popupWindow = new Dialog(context, android.R.style.Theme_Translucent);
+//                popupWindow.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                popupWindow.setContentView(layout);
+//                popupWindow.setCancelable(false);
+//                if (!((Activity) context).isFinishing()) {
+//                    popupWindow.show();
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
 
-    public static void hideProgress() {
-        try {
-            if (popupWindow != null && popupWindow.isShowing()) {
-                popupWindow.dismiss();
-            }
-        } catch (Throwable e) {
-            e.printStackTrace();
+    public static void hideProgress(ProgressBar progressBar) {
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
         }
+//        try {
+//            if (popupWindow != null && popupWindow.isShowing()) {
+//                popupWindow.dismiss();
+//            }
+//        } catch (Throwable e) {
+//            e.printStackTrace();
+//        }
     }
 
 

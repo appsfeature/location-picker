@@ -28,6 +28,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -122,6 +123,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
 
     private final LocationPickerDetail mLocationDetail = new LocationPickerDetail();
     private String userAddress;
+    private ProgressBar pbProgress;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -160,6 +162,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
 
         if(getSupportActionBar()!=null)
             getSupportActionBar().hide();
+        pbProgress = findViewById(R.id.progress_bar);
         ImageView ivCurrentLoc = findViewById(R.id.iv_current_location);
         Button btnContinue = findViewById(R.id.btn_continue);
         ImageView ivDirectionTool = findViewById(R.id.iv_direction_tool);
@@ -692,7 +695,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         if (mLatitude != 0 && mLongitude != 0) {
 
             if (MapUtility.popupWindow != null && MapUtility.popupWindow.isShowing()) {
-                MapUtility.hideProgress();
+                MapUtility.hideProgress(pbProgress);
             }
 
             Log.d(TAG, "getAddressByGeoCodingLatLng: START");
@@ -714,7 +717,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         if (mLatitude == 0 && mLongitude == 0) {
 
             if (MapUtility.popupWindow != null && MapUtility.popupWindow.isShowing()) {
-                MapUtility.hideProgress();
+                MapUtility.hideProgress(pbProgress);
             }
 
             Log.d(TAG, "getLatLngByRevGeoCodeFromAdd: START");
@@ -736,7 +739,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            MapUtility.showProgress(LocationPickerActivity.this);
+            MapUtility.showProgress(pbProgress);
         }
 
         @Override
@@ -805,7 +808,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         // setting address into different components
         protected void onPostExecute(LocationPickerDetail userAddress) {
             super.onPostExecute(userAddress);
-            MapUtility.hideProgress();
+            MapUtility.hideProgress(pbProgress);
             addMarker();
         }
     }
@@ -815,7 +818,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            MapUtility.showProgress(LocationPickerActivity.this);
+            MapUtility.showProgress(pbProgress);
         }
 
         @Override
@@ -845,7 +848,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             super.onPostExecute(latLng);
             LocationPickerActivity.this.mLatitude = latLng.latitude;
             LocationPickerActivity.this.mLongitude = latLng.longitude;
-            MapUtility.hideProgress();
+            MapUtility.hideProgress(pbProgress);
             addMarker();
         }
     }

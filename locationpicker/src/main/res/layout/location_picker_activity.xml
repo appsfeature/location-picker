@@ -59,103 +59,117 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
         android:layout_marginRight="16dp"
         android:clickable="true"
         card_view:cardCornerRadius="4dp"
         card_view:cardElevation="8dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_layout_address_line1"
-                style="@style/TextInputLayoutStyle"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/address_line1_hint"
-                app:expandedHintEnabled="true">
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp">
 
-                <!--this is the actual edit text which takes the input-->
-                <AutoCompleteTextView
-                    android:id="@+id/tv_address_line1"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layout_address_line1"
+                    style="@style/TextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapSentences"
-                    android:lines="1"
-                    android:padding="14dp"
-                    android:textSize="@dimen/location_edittext_size" />
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/address_line1_hint"
+                    app:expandedHintEnabled="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <!--this is the actual edit text which takes the input-->
+                    <AutoCompleteTextView
+                        android:id="@+id/tv_address_line1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapSentences"
+                        android:lines="1"
+                        android:padding="14dp"
+                        android:textSize="@dimen/location_edittext_size" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_layout_address_line2"
-                style="@style/TextInputLayoutStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/address_line2_hint"
-                app:expandedHintEnabled="true">
-
-                <!--this is the actual edit text which takes the input-->
-                <AutoCompleteTextView
-                    android:id="@+id/tv_address_line2"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layout_address_line2"
+                    style="@style/TextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:inputType="textCapSentences|textMultiLine"
-                    android:lines="3"
-                    android:minLines="1"
-                    android:padding="14dp"
-                    android:textSize="@dimen/location_edittext_size" />
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/address_line2_hint"
+                    app:expandedHintEnabled="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <!--this is the actual edit text which takes the input-->
+                    <AutoCompleteTextView
+                        android:id="@+id/tv_address_line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:lines="3"
+                        android:minLines="1"
+                        android:padding="14dp"
+                        android:textSize="@dimen/location_edittext_size" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_layout_city_details"
-                style="@style/TextInputLayoutStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="@string/city_detail_hint"
-                app:expandedHintEnabled="true">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <!--this is the actual edit text which takes the input-->
-                <AutoCompleteTextView
-                    android:id="@+id/tv_city_details"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layout_city_details"
+                    style="@style/TextInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:ellipsize="end"
-                    android:enabled="false"
-                    android:inputType="textCapSentences|textMultiLine"
-                    android:lines="3"
-                    android:minLines="1"
-                    android:padding="14dp"
-                    android:textColor="@color/quantum_grey600"
-                    android:textSize="@dimen/location_edittext_size" />
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/city_detail_hint"
+                    app:expandedHintEnabled="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <!--this is the actual edit text which takes the input-->
+                    <AutoCompleteTextView
+                        android:id="@+id/tv_city_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:ellipsize="end"
+                        android:enabled="false"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:lines="3"
+                        android:minLines="1"
+                        android:padding="14dp"
+                        android:textColor="@color/quantum_grey600"
+                        android:textSize="@dimen/location_edittext_size" />
 
-            <Button
-                android:id="@+id/btn_continue"
-                android:layout_width="match_parent"
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_continue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/quantum_googgreen500"
+                    android:text="@string/button_continue_text"
+                    android:textColor="@color/quantum_white_100" />
+
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="@android:style/Widget.ProgressBar.Small"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/quantum_googgreen500"
-                android:text="@string/button_continue_text"
-                android:textColor="@color/quantum_white_100" />
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
 
-
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
@@ -163,8 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/input_layout"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:padding="8dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -172,35 +185,66 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/iv_google_maps_tool"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:background="@drawable/bg_button_sami_transparent"
-                android:contentDescription="google_map"
-                android:padding="8dp"
-                android:src="@drawable/ic_google_maps" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                android:layout_margin="8dp"
+                card_view:cardCornerRadius="2dp"
+                card_view:cardElevation="4dp">
 
-            <ImageView
-                android:id="@+id/iv_direction_tool"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/bg_button_sami_transparent"
-                android:contentDescription="directions"
-                android:padding="8dp"
-                android:src="@drawable/ic_directions_blue_24dp" />
+                <ImageView
+                    android:id="@+id/iv_google_maps_tool"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:contentDescription="google_map"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_google_maps" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="8dp"
+                app:cardBackgroundColor="@android:color/white"
+                card_view:cardCornerRadius="2dp"
+                card_view:cardElevation="4dp">
+
+                <ImageView
+                    android:id="@+id/iv_direction_tool"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:contentDescription="directions"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_directions_blue_24dp" />
+
+            </androidx.cardview.widget.CardView>
+
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/iv_current_location"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_button_sami_transparent"
-            android:contentDescription="Search Location"
-            android:padding="8dp"
-            android:src="@drawable/ic_my_location_black_24dp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_margin="8dp"
+            card_view:cardCornerRadius="2dp"
+            card_view:cardElevation="4dp">
+
+            <ImageView
+                android:id="@+id/iv_current_location"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Search Location"
+                android:padding="8dp"
+                android:src="@drawable/ic_my_location_black_24dp" />
+
+        </androidx.cardview.widget.CardView>
+
 
     </LinearLayout>
 </RelativeLayout>
