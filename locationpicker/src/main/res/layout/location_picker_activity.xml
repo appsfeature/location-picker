@@ -39,8 +39,6 @@
 
     </androidx.cardview.widget.CardView>
 
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/input_layout"
         android:layout_width="match_parent"

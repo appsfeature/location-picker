@@ -492,7 +492,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
 
             }
         });
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setZoomControlsEnabled(false);
 
         // Setting a click event handler for the map
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
