@@ -9,7 +9,7 @@
 
     <application>
         <activity android:name=".activity.LocationPickerActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:theme="@style/LocationPicker.MaterialComponents.NoActionBar"/>
     </application>
 </manifest>

@@ -22,6 +22,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +36,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -121,7 +126,38 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(LocationPicker.getInstance().isEnableTranslucentStatus()) {
+            WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        }
         setContentView(R.layout.location_picker_activity);
+        View viewStatus = findViewById(R.id.view_status_bar);
+
+        if(LocationPicker.getInstance().isEnableTranslucentStatus()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.TRANSPARENT);
+            }
+            View mainView = findViewById(R.id.main_view);
+            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, windowInsets) -> {
+                boolean isVisibleKeyboard = windowInsets.isVisible(WindowInsetsCompat.Type.ime());
+                Insets insetsSystemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+                Insets insetsIme = windowInsets.getInsets(WindowInsetsCompat.Type.ime());
+
+                ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+                mlp.leftMargin = insetsSystemBars.left;
+                if(isVisibleKeyboard) {
+                    mlp.bottomMargin = insetsIme.bottom;
+                }else {
+                    mlp.bottomMargin = insetsSystemBars.bottom;
+                }
+                mlp.rightMargin = insetsSystemBars.right;
+                v.setLayoutParams(mlp);
+                return WindowInsetsCompat.CONSUMED;
+            });
+            viewStatus.setVisibility(View.VISIBLE);
+        }else {
+            viewStatus.setVisibility(View.GONE);
+        }
+
         if(getSupportActionBar()!=null)
             getSupportActionBar().hide();
         ImageView ivCurrentLoc = findViewById(R.id.iv_current_location);
