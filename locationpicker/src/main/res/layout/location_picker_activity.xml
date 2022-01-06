@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,127 +12,136 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/tv_search_bar"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/white_rounded_corner"
-        android:drawableStart="@drawable/ic_pointer"
-        android:drawableLeft="@drawable/ic_place_red_800_24dp"
-        android:drawableEnd="@drawable/ic_search_black_24dp"
-        android:drawableRight="@drawable/ic_search_black_24dp"
-        android:drawablePadding="5dp"
-        android:drawableTint="@color/colorPrimary"
-        android:gravity="start|center_vertical"
-        android:hint="Search Location"
-        android:maxLines="1"
-        android:padding="16dp"
-        android:textColorHint="@color/colorPrimary"
-        android:textCursorDrawable="@null"
-        android:textSize="@dimen/location_edittext_search_bar_size" />
+        android:layout_margin="16dp"
+        card_view:cardCornerRadius="32dp"
+        card_view:cardElevation="4dp">
+
+        <TextView
+            android:id="@+id/tv_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:gravity="start|center_vertical"
+            android:hint="Search Location"
+            android:maxLines="1"
+            android:padding="14dp"
+            android:textColorHint="@color/colorPrimary"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/location_edittext_search_bar_size"
+            app:drawableStartCompat="@drawable/ic_pointer"
+            app:drawableLeftCompat="@drawable/ic_place_red_800_24dp"
+            app:drawableEndCompat="@drawable/ic_search_black_24dp"
+            app:drawableRightCompat="@drawable/ic_search_black_24dp"
+            app:drawableTint="@color/colorPrimary" />
+
+    </androidx.cardview.widget.CardView>
 
 
-    <LinearLayout
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:clickable="true"
-        android:background="@drawable/white_rounded_corner_bottom"
-        android:orientation="vertical"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="8dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_layout_address_line1"
-            style="@style/TextInputLayoutStyle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:expandedHintEnabled="true"
-            android:hint="@string/address_line1_hint">
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
 
-            <!--this is the actual edit text which takes the input-->
-            <AutoCompleteTextView
-                android:id="@+id/tv_address_line1"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_layout_address_line1"
+                style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapSentences"
-                android:textSize="@dimen/location_edittext_size"
-                android:lines="1"
-                android:padding="14dp"/>
+                android:layout_marginTop="16dp"
+                app:expandedHintEnabled="true"
+                android:hint="@string/address_line1_hint">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <!--this is the actual edit text which takes the input-->
+                <AutoCompleteTextView
+                    android:id="@+id/tv_address_line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences"
+                    android:textSize="@dimen/location_edittext_size"
+                    android:lines="1"
+                    android:padding="14dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_layout_address_line2"
-            style="@style/TextInputLayoutStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:expandedHintEnabled="true"
-            android:hint="@string/address_line2_hint">
-
-            <!--this is the actual edit text which takes the input-->
-            <AutoCompleteTextView
-                android:id="@+id/tv_address_line2"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_layout_address_line2"
+                style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapSentences|textMultiLine"
-                android:lines="3"
-                android:textSize="@dimen/location_edittext_size"
-                android:minLines="1"
-                android:ellipsize="end"
-                android:padding="14dp"/>
+                android:layout_marginTop="8dp"
+                app:expandedHintEnabled="true"
+                android:hint="@string/address_line2_hint">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <!--this is the actual edit text which takes the input-->
+                <AutoCompleteTextView
+                    android:id="@+id/tv_address_line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:lines="3"
+                    android:textSize="@dimen/location_edittext_size"
+                    android:minLines="1"
+                    android:ellipsize="end"
+                    android:padding="14dp"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_layout_city_details"
-            style="@style/TextInputLayoutStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:expandedHintEnabled="true"
-            android:hint="@string/city_detail_hint">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <!--this is the actual edit text which takes the input-->
-            <AutoCompleteTextView
-                android:id="@+id/tv_city_details"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_layout_city_details"
+                style="@style/TextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapSentences|textMultiLine"
-                android:textColor="@color/quantum_grey600"
-                android:enabled="false"
-                android:clickable="false"
-                android:textSize="@dimen/location_edittext_size"
-                android:lines="3"
-                android:minLines="1"
-                android:ellipsize="end"
-                android:padding="14dp"/>
+                android:layout_marginTop="8dp"
+                app:expandedHintEnabled="true"
+                android:hint="@string/city_detail_hint">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <!--this is the actual edit text which takes the input-->
+                <AutoCompleteTextView
+                    android:id="@+id/tv_city_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:textColor="@color/quantum_grey600"
+                    android:enabled="false"
+                    android:clickable="false"
+                    android:textSize="@dimen/location_edittext_size"
+                    android:lines="3"
+                    android:minLines="1"
+                    android:ellipsize="end"
+                    android:padding="14dp"/>
 
-        <Button
-            android:id="@+id/btn_continue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@color/quantum_googgreen500"
-            android:text="@string/button_continue_text"
-            android:textColor="@color/quantum_white_100" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_continue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/quantum_googgreen500"
+                android:text="@string/button_continue_text"
+                android:textColor="@color/quantum_white_100" />
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
     <ImageView
@@ -141,7 +151,7 @@
         android:layout_above="@+id/input_layout"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="16dp"
         android:background="#9FFFFFFF"
         android:contentDescription="Search Location"
         android:padding="8dp"
@@ -166,7 +176,7 @@
         android:layout_above="@+id/input_layout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="16dp"
         android:background="#9FFFFFFF"
         android:contentDescription="google_map"
         android:padding="8dp"

@@ -1,18 +1,23 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
 
-    <style name="LocationPicker.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+<!--    <style name="LocationPicker.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+<!--    </style>-->
 
     <style name="LocationPicker.MaterialComponents.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/white</item>
+        <!--   User for status bar items color dark   -->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
     </style>
 
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
