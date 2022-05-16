@@ -2,7 +2,6 @@ package com.sample.locationpicker;
 
 import android.app.Application;
 
-import com.google.android.libraries.places.api.Places;
 import com.location.picker.LocationPicker;
 
 import java.util.Locale;
