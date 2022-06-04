@@ -5,22 +5,16 @@ import android.content.Intent;
 
 import com.location.picker.activity.LocationPickerActivity;
 import com.location.picker.interfaces.LocationPickerCallback;
+import com.location.picker.interfaces.LocationProperties;
 import com.location.picker.model.LocationPickerDetail;
 import com.location.picker.util.LocationConstants;
 
 public class LocationPicker {
 
     private static volatile LocationPicker instance;
-    public String apiKey = "";
-    private boolean isEnableSearchBar = true;
-    private boolean isEnableAddressLine1 = true;
-    private boolean isEnableAddressLine2 = true;
-    private boolean isEnableCityDetails = true;
-    private boolean isEnableButtonMap = true;
-    private boolean isEnableButtonDirection = true;
-    private boolean isEnableTranslucentStatus = true;
+
     private LocationPickerCallback locationPickerCallback;
-    private String hintAddressLine1;
+    private LocationProperties property;
 
     private LocationPicker() {
         if (instance != null) {
@@ -38,74 +32,35 @@ public class LocationPicker {
     }
 
     public String getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
+        return getProperty().apiKey;
     }
 
     public boolean isEnableSearchBar() {
-        return isEnableSearchBar;
-    }
-
-    public LocationPicker setEnableSearchBar(boolean isEnableSearchBar) {
-        this.isEnableSearchBar = isEnableSearchBar;
-        return this;
+        return getProperty().isEnableSearchBar;
     }
 
     public String getHintAddressLine1() {
-        return hintAddressLine1;
-    }
-
-    public LocationPicker setHintAddressLine1(String hintAddressLine1) {
-        this.hintAddressLine1 = hintAddressLine1;
-        return this;
+        return getProperty().hintAddressLine1;
     }
 
     public boolean isEnableAddressLine1() {
-        return isEnableAddressLine1;
-    }
-
-    public LocationPicker setEnableAddressLine1(boolean enableAddressLine1) {
-        isEnableAddressLine1 = enableAddressLine1;
-        return this;
+        return getProperty().isEnableAddressLine1;
     }
 
     public boolean isEnableAddressLine2() {
-        return isEnableAddressLine2;
-    }
-
-    public LocationPicker setEnableAddressLine2(boolean enableAddressLine2) {
-        isEnableAddressLine2 = enableAddressLine2;
-        return this;
+        return getProperty().isEnableAddressLine2;
     }
 
     public boolean isEnableCityDetails() {
-        return isEnableCityDetails;
-    }
-
-    public LocationPicker setEnableCityDetails(boolean enableCityDetails) {
-        isEnableCityDetails = enableCityDetails;
-        return this;
+        return getProperty().isEnableCityDetails;
     }
 
     public boolean isEnableButtonMap() {
-        return isEnableButtonMap;
-    }
-
-    public LocationPicker setEnableButtonMap(boolean isEnableButtonMap) {
-        this.isEnableButtonMap = isEnableButtonMap;
-        return this;
+        return getProperty().isEnableButtonMap;
     }
 
     public boolean isEnableButtonDirection() {
-        return isEnableButtonDirection;
-    }
-
-    public LocationPicker setEnableButtonDirection(boolean isEnableButtonDirection) {
-        this.isEnableButtonDirection = isEnableButtonDirection;
-        return this;
+        return getProperty().isEnableButtonDirection;
     }
 
     public LocationPicker setLocationCallback(LocationPickerCallback locationPickerCallback) {
@@ -129,11 +84,14 @@ public class LocationPicker {
     }
 
     public boolean isEnableTranslucentStatus() {
-        return isEnableTranslucentStatus;
+        return getProperty().isEnableTranslucentStatus;
     }
 
-    public LocationPicker setEnableTranslucentStatus(boolean enableTranslucentStatus) {
-        isEnableTranslucentStatus = enableTranslucentStatus;
-        return this;
+    public void setProperty(LocationProperties property) {
+        this.property = property;
+    }
+
+    public LocationProperties getProperty() {
+        return property == null ? new LocationProperties() : property;
     }
 }
