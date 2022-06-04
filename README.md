@@ -1,8 +1,8 @@
 # location-picker
 ## Before you begin:
 
-## Required for Search Bar:
-### Before you start using the Places SDK for Android, you need a project with a billing account and the Places API enabled. We recommend creating multiple Project Owners and Billing Administrators, so that you'll always have someone with these roles available to your team. To learn more, see Set up in Cloud Console.
+#### Basic Requirements for Search Bar:
+#### Before you start using the Places SDK for Android, you need a project with a billing account and the Places API enabled. We recommend creating multiple Project Owners and Billing Administrators, so that you'll always have someone with these roles available to your team. To learn more, see Set up in Cloud Console.
 
 *Search any location using Google Places Library
 *Pick any location from the map
