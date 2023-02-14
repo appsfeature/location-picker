@@ -1,7 +1,5 @@
 package com.location.picker.interfaces;
 
-import com.location.picker.LocationPicker;
-
 public class LocationProperties {
 
     public String apiKey = "";
