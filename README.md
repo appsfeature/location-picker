@@ -40,7 +40,7 @@ Add this to your project build.gradle
 [![](https://jitpack.io/v/appsfeature/location-picker.svg)](https://jitpack.io/#appsfeature/location-picker)
 ```gradle
 dependencies {
-    implementation 'com.github.appsfeature:location-picker:2.3'
+    implementation 'com.github.appsfeature:location-picker:2.6'
 }
 ```
 Needed support libs
