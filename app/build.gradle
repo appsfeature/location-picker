@@ -1,16 +1,15 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'
 }
 
 android {
     flavorDimensions "default"
-    compileSdk 30
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.sample.locationpicker"
-        minSdk 16
-        targetSdk 30
+        minSdk 21
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -30,14 +29,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
 dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
-    implementation project(path: ':locationpicker')
     implementation "com.google.android.libraries.places:places:$rootProject.ext.google_places"
+    implementation project(path: ':locationpicker')
 }

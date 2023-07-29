@@ -3,13 +3,11 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 33
 
     defaultConfig {
-        minSdk 16
-        targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        minSdk 21
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -21,9 +19,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 

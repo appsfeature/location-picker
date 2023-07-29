@@ -4,7 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/location-picker.iml" filepath="$PROJECT_DIR$/.idea/modules/location-picker.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/location-picker.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/location-picker.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/location-picker.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/location-picker.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/location-picker.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/location-picker.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/location-picker.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/location-picker.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/locationpicker/location-picker.locationpicker.iml" filepath="$PROJECT_DIR$/.idea/modules/locationpicker/location-picker.locationpicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/locationpicker/location-picker.locationpicker.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/locationpicker/location-picker.locationpicker.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/locationpicker/location-picker.locationpicker.main.iml" filepath="$PROJECT_DIR$/.idea/modules/locationpicker/location-picker.locationpicker.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/locationpicker/location-picker.locationpicker.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/locationpicker/location-picker.locationpicker.unitTest.iml" />
     </modules>
   </component>
 </project>
