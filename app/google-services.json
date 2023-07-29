@@ -1,1 +1,39 @@
-Paste file here
+{
+  "project_info": {
+    "project_number": "556495574953",
+    "project_id": "allinone-22740",
+    "storage_bucket": "allinone-22740.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:556495574953:android:5b6e024e3ba926984696b8",
+        "android_client_info": {
+          "package_name": "com.allinone.allinoneglobalmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "556495574953-9embj2vucci90pi8mlidhuom8t9dce5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJuuHnYpdhRsZNnrGgWzu3_SIK83Offl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "556495574953-9embj2vucci90pi8mlidhuom8t9dce5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

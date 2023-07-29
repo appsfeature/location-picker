@@ -1,8 +1,8 @@
 # location-picker
-##Before you begin:
+## Before you begin:
 
-##Required for Search Bar:
-###Before you start using the Places SDK for Android, you need a project with a billing account and the Places API enabled. We recommend creating multiple Project Owners and Billing Administrators, so that you'll always have someone with these roles available to your team. To learn more, see Set up in Cloud Console.
+#### Basic Requirements for Search Bar:
+#### Before you start using the Places SDK for Android, you need a project with a billing account and the Places API enabled. We recommend creating multiple Project Owners and Billing Administrators, so that you'll always have someone with these roles available to your team. To learn more, see Set up in Cloud Console.
 
 *Search any location using Google Places Library
 *Pick any location from the map
@@ -40,7 +40,7 @@ Add this to your project build.gradle
 [![](https://jitpack.io/v/appsfeature/location-picker.svg)](https://jitpack.io/#appsfeature/location-picker)
 ```gradle
 dependencies {
-    implementation 'com.github.appsfeature:location-picker:2.3'
+    implementation 'com.github.appsfeature:location-picker:2.6'
 }
 ```
 Needed support libs
@@ -94,14 +94,15 @@ public class AppApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-
         LocationPicker.getInstance()
-                .setEnableSearchBar(true)
-                .setEnableAddressLine1(true)
-                .setEnableAddressLine2(true)
-                .setEnableCityDetails(true)
-                .setHintAddressLine1("Enter Shop Detail")
-                .setApiKey(getString(R.string.google_api_key));
+                .setProperty(LocationProperties.Builder()
+                        .setEnableSearchBar(true)
+                        .setEnableAddressLine1(true)
+                        .setEnableAddressLine2(true)
+                        .setEnableCityDetails(true)
+                        .setEnableTranslucentStatus(true)
+                        .setHintAddressLine1("Shop Detail")
+                        .setApiKey(getString(R.string.google_api_key)));
     }
 }
 ```

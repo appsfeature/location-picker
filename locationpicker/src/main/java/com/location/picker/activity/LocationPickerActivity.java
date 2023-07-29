@@ -262,7 +262,7 @@ public class LocationPickerActivity extends AppCompatActivity implements OnMapRe
             @Override
             public void onClick(View view) {
                 if (!Places.isInitialized()) {
-                    Places.initialize(LocationPickerActivity.this.getApplicationContext(), LocationPicker.getInstance().apiKey);
+                    Places.initialize(LocationPickerActivity.this.getApplicationContext(), LocationPicker.getInstance().getApiKey());
                 }
                 // Set the fields to specify which types of place data to return.
                 List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
