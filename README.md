@@ -1,4 +1,7 @@
 # location-picker
+
+#### Library size is : 2.8MB
+
 ## Before you begin:
 
 #### Basic Requirements for Search Bar:
